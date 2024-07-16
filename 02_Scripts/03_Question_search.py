@@ -44,7 +44,7 @@ if 'xplorer' not in st.session_state:
 else:
     xplorer = st.session_state['xplorer']
 #%% Funciones
-@st.cache_data
+@st.cache_data(ttl=600)
 def _find(str_buscado, xplorer = xplorer):
     emb_buscar = xplorer.get_embedding(str_buscado)
         # calcular distancias/similitud
@@ -106,7 +106,7 @@ col3.metric(label="Preguntas encontradas", value=findedterms_subtotal)
 terms_subtotal = subtable.shape[0]
 col4.metric(label="Preguntas seleccionadas", value=terms_subtotal)
 
-@st.cache_data
+@st.cache_data(ttl=600)
 def to_excel(df):
     output = BytesIO()
     writer = pd.ExcelWriter(output, engine='xlsxwriter')
@@ -119,7 +119,7 @@ try:
     df_xlsx = to_excel(subtable)
     today = str(datetime.today())
     table.download_button(label='📥 Descargar las preguntas seleccionadas (.xlsx)',
-                                data=df_xlsx ,
+                                data=df_xlsx, 
                                 file_name= f'ENAHO_2023_descargado_el_{today}.xlsx')
 except:
     # table.text("La tabla está vacía")
