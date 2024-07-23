@@ -19,7 +19,7 @@ from datetime import datetime
 from ENAHOxplorer_small import *
 
 
-key_ = st.secrets["akey"]
+key_ = ""#st.secrets["akey"]
 #%%
 # configurationpage
 st.set_page_config(layout="wide")
@@ -79,6 +79,8 @@ with table:
     selected_gr = return_select['checked'] #.values())
     selected_list = xplorer.dfgrvars.loc[xplorer.dfgrvars['@ID'].apply(lambda x: x in selected_gr),'@var'].to_list()
     selected = [y for x in selected_list for y in str(x).split(' ')]
+    # st.write(selected_gr)
+    # st.write("________")
     # st.write(selected)
     str_buscar = st.text_input("Introduzca el texto a buscar en el siguiente recuadro:")
     bool_buscar = st.button("Buscar")
