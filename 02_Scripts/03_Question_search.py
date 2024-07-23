@@ -19,7 +19,7 @@ from datetime import datetime
 from ENAHOxplorer_small import *
 
 
-key_ = ""#st.secrets["akey"]
+key_ = st.secrets["akey"]
 #%%
 # configurationpage
 st.set_page_config(layout="wide")
