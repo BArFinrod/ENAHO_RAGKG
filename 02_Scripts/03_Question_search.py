@@ -92,12 +92,12 @@ with table:
         findedterms_subtotal = dffinded.shape[0]
         # ordenar la base
         # subtable = dffinded[['@ID','labl']]
-        subtable = dffinded.loc[dffinded['@ID'].apply(lambda x: x in selected),['Nombre','Etiqueta','Definición','Pregunta']]
+        subtable = dffinded.loc[dffinded['@ID'].apply(lambda x: x in selected),['Nombre','Etiqueta','Definición','Pregunta','Categorías']]
         st.dataframe(subtable, hide_index=True, use_container_width=True)#, width=2000)
     else:
         # # if buscar, get embedding, get normas, ordenar de mayor a menor similaridad
         # # quedarnos con los mayores a 4 # da igual ya que usamos in
-        subtable = xplorer.dfvars.loc[xplorer.dfvars['@ID'].apply(lambda x: x in selected),['Nombre','Etiqueta','Definición','Pregunta']]
+        subtable = xplorer.dfvars.loc[xplorer.dfvars['@ID'].apply(lambda x: x in selected),['Nombre','Etiqueta','Definición','Pregunta','Categorías']]
         if subtable.shape[0]==0:
             st.warning("Seleccione alguno de los Grupos en el panel de la izquierda para que se muestren los resultados.", icon="⚠️")
         st.dataframe(subtable, hide_index=True, use_container_width=True)#, width=2000)
